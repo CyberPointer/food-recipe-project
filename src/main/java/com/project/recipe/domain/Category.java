@@ -1,8 +1,12 @@
 package com.project.recipe.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.util.Set;
 
+@Data
+@EqualsAndHashCode(exclude = {"recipes"})
 @Entity
 public class Category {
     @Id
@@ -11,32 +15,10 @@ public class Category {
     private String description;
 
     @ManyToMany(mappedBy = "categories")
-    private Set<Recipe> recipe;
+    @ToString.Exclude
+    private Set<Recipe> recipes;
 
     public Category() {
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public Set<Recipe> getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(Set<Recipe> recipe) {
-        this.recipe = recipe;
-    }
 }

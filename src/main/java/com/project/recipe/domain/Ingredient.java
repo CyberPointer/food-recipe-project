@@ -1,8 +1,12 @@
 package com.project.recipe.domain;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.math.BigDecimal;
 
+@Data
+@EqualsAndHashCode(exclude = {"recipe"})
 @Entity
 public class Ingredient {
     @Id
@@ -13,52 +17,22 @@ public class Ingredient {
     private BigDecimal amount;
 
     @ManyToOne
+    @ToString.Exclude
     Recipe recipe;
 
     @OneToOne(fetch = FetchType.EAGER)
-    private UnitOfMesure unitOfMesure;
+    private UnitOfMeasure unitOfMeasure;
 
     public Ingredient(){
 
     }
 
-    public Long getId() {
-        return id;
+    public UnitOfMeasure getUnitOfMesure() {
+        return unitOfMeasure;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setUnitOfMesure(UnitOfMeasure unitOfMeasure) {
+        this.unitOfMeasure = unitOfMeasure;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public BigDecimal getAmount() {
-        return amount;
-    }
-
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
-
-    public Recipe getRecipe() {
-        return recipe;
-    }
-
-    public void setRecipe(Recipe recipe) {
-        this.recipe = recipe;
-    }
-
-    public UnitOfMesure getUnitOfMesure() {
-        return unitOfMesure;
-    }
-
-    public void setUnitOfMesure(UnitOfMesure unitOfMesure) {
-        this.unitOfMesure = unitOfMesure;
-    }
 }
