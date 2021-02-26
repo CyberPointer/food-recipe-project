@@ -7,6 +7,7 @@ import javax.persistence.*;
 @Data
 @EqualsAndHashCode(exclude = {"recipe"})
 @Entity
+@ToString(exclude ={"recipe"})
 public class Notes {
 
     @Id
@@ -14,7 +15,6 @@ public class Notes {
     private Long id;
 
     @OneToOne
-    @ToString.Exclude
     private Recipe recipe;
 
     @Lob

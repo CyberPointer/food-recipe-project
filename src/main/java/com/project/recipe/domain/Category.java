@@ -8,17 +8,15 @@ import java.util.Set;
 @Data
 @EqualsAndHashCode(exclude = {"recipes"})
 @Entity
+@ToString(exclude ={"recipes"})
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
 
     @ManyToMany(mappedBy = "categories")
-    @ToString.Exclude
     private Set<Recipe> recipes;
-
-    public Category() {
-    }
 
 }
