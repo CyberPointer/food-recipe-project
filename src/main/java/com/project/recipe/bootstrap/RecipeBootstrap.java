@@ -1,4 +1,4 @@
-package com.project.recipe.controllers;
+package com.project.recipe.bootstrap;
 
 
 import com.project.recipe.domain.*;
