@@ -4,8 +4,8 @@ import com.project.recipe.commands.UnitOfMeasureCommand;
 import com.project.recipe.converters.UnitOfMeasureToUnitOfMeasureCommand;
 import com.project.recipe.domain.UnitOfMeasure;
 import com.project.recipe.repositories.UnitOfMeasureRepository;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 
@@ -13,10 +13,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
-class UnitOfMeasureServiceImplTest {
+public class UnitOfMeasureServiceImplTest {
 
     UnitOfMeasureToUnitOfMeasureCommand unitOfMeasureToUnitOfMeasureCommand = new UnitOfMeasureToUnitOfMeasureCommand();
     UnitOfMeasureService service;
@@ -24,12 +23,11 @@ class UnitOfMeasureServiceImplTest {
     @Mock
     UnitOfMeasureRepository unitOfMeasureRepository;
 
-    @BeforeEach
-    void setUp() {
-        MockitoAnnotations.openMocks(this);
+    @Before
+    public void setUp() throws Exception {
+        MockitoAnnotations.initMocks(this);
 
         service = new UnitOfMeasureServiceImpl(unitOfMeasureRepository, unitOfMeasureToUnitOfMeasureCommand);
-
     }
 
     @Test
@@ -51,7 +49,7 @@ class UnitOfMeasureServiceImplTest {
 
         //then
         assertEquals(2, commands.size());
-        verify(unitOfMeasureRepository).findAll();
+        verify(unitOfMeasureRepository, times(1)).findAll();
     }
 
 }

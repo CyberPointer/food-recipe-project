@@ -1,30 +1,37 @@
 package com.project.recipe.domain;
 
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
-class CategoryTest {
+import static org.junit.Assert.assertEquals;
+
+/**
+ * Created by jt on 6/17/17.
+ */
+public class CategoryTest {
 
     Category category;
 
-   @BeforeEach
+    @Before
     public void setUp(){
         category = new Category();
     }
 
     @Test
-    void getId() {
-       Long idValue = 4l;
-       category.setId(idValue);
-        Assertions.assertEquals(idValue, category.getId());
+    public void getId() throws Exception {
+        Long idValue = 4L;
+
+        category.setId(idValue);
+
+        assertEquals(idValue, category.getId());
     }
 
     @Test
-    void getDescription() {
+    public void getDescription() throws Exception {
     }
 
     @Test
-    void getRecipes() {
+    public void getRecipes() throws Exception {
     }
+
 }
